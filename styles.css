@@ -1,0 +1,42 @@
+body{
+    background:#ececec;
+    padding:50px;
+}
+
+.toggle{
+    --size: 200px;   /* শুধু এটা change করলেই বড়/ছোট হবে */
+
+    position: relative;
+    display: inline-block;
+    width: var(--size);
+    height: calc(var(--size) / 2);
+}
+
+.toggle input{
+    display:none;
+}
+
+.slider{
+    position:absolute;
+    inset:0;
+    border-radius:999px;
+    background::#f5f5f7 ;
+    box-shadow: inset 5px 5px 10px rgba(0,0,0,.05),
+                inset -5px -5px 10px #fff;
+}
+
+.slider::before{
+    content:"";
+    position:absolute;
+    width: calc(var(--size) * 0.42);
+    height: calc(var(--size) * 0.42);
+    left: calc(var(--size) * 0.04);
+    top: calc(var(--size) * 0.04);
+    background:#fff;
+    border-radius:50%;
+    transition:.3s;
+}
+
+input:checked + .slider::before{
+    transform: translateX(calc(var(--size) * 0.5));
+}
